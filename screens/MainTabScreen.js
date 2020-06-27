@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Text, View, Settings } from 'react-native'
+import { View, Settings } from 'react-native'
 
 import { createStackNavigator } from '@react-navigation/stack';
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
@@ -15,64 +15,65 @@ const HomeStack = createStackNavigator();
 
 const Tab = createMaterialBottomTabNavigator();
 
+CreateHomeStack =({ navigation })=> (
+    <HomeStack.Navigator
+        screenOptions={{
+            headerStyle:{
+                backgroundColor:'#009387'
+            },
+            headerTintColor:'#fff',
+            headerTitleStyle:{
+                fontWeight:'bold'
+            }
+        }}>
+        <HomeStack.Screen 
+            options={{
+                title:'Overview',
+                headerLeft: () => (
+                    <Icon.Button name="navicon" size={25} 
+                        backgroundColor="#009387" 
+                        onPress={() => navigation.openDrawer()}>
+                    </Icon.Button>
+                )
+            }}
+            name="Home" 
+            component={HomeScreen}
+            />
+
+    </HomeStack.Navigator>
+)
+
+CreateDetailStack =({navigation})=> (
+    <HomeStack.Navigator
+        screenOptions={{
+            headerStyle:{
+                backgroundColor:'#1f65ff'
+            },
+            headerTintColor:'#fff',
+            headerTitleStyle:{
+                fontWeight:'bold'
+            }
+        }}>
+        <HomeStack.Screen 
+            options={{
+                title:'Details',
+                headerLeft: () => (
+                  <Icon.Button name="navicon" size={25} 
+                      backgroundColor="#1f65ff" 
+                      onPress={() => navigation.openDrawer()}>
+                  </Icon.Button>
+                )
+            }}
+            name="Details" 
+            component={DetailsScreen}
+            />
+
+    </HomeStack.Navigator>
+)
+
 export default class MainTabScreen extends Component {
+    
     render() {
-
-        CreateHomeStack =({ navigation })=> (
-            <HomeStack.Navigator
-                screenOptions={{
-                    headerStyle:{
-                        backgroundColor:'#009387'
-                    },
-                    headerTintColor:'#fff',
-                    headerTitleStyle:{
-                        fontWeight:'bold'
-                    }
-                }}>
-                <HomeStack.Screen 
-                    options={{
-                        title:'Overview',
-                        headerLeft: () => (
-                            <Icon.Button name="navicon" size={25} 
-                                backgroundColor="#009387" 
-                                onPress={() => navigation.openDrawer()}>
-                            </Icon.Button>
-                        )
-                    }}
-                    name="Home" 
-                    component={HomeScreen}
-                    />
-
-            </HomeStack.Navigator>
-        )
-
-        CreateDetailStack =({navigation})=> (
-            <HomeStack.Navigator
-                screenOptions={{
-                    headerStyle:{
-                        backgroundColor:'#1f65ff'
-                    },
-                    headerTintColor:'#fff',
-                    headerTitleStyle:{
-                        fontWeight:'bold'
-                    }
-                }}>
-                <HomeStack.Screen 
-                    options={{
-                        title:'Details',
-                        headerLeft: () => (
-                          <Icon.Button name="navicon" size={25} 
-                              backgroundColor="#1f65ff" 
-                              onPress={() => navigation.openDrawer()}>
-                          </Icon.Button>
-                        )
-                    }}
-                    name="Details" 
-                    component={DetailsScreen}
-                    />
-
-            </HomeStack.Navigator>
-        )
 
         return (
             <Tab.Navigator

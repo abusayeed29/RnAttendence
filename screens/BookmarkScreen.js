@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
 import { Text, StyleSheet, View } from 'react-native'
 
-export default class SettingsScreen extends Component {
+export default class BookmarkScreen extends Component {
     render() {
         return (
             <View style={styles.container}>
-                <Text> Settings Screen </Text>
+                <Text> Book Mark Screen </Text>
             </View>
         )
     }
